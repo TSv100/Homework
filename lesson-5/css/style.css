@@ -1,0 +1,51 @@
+.some-text {
+    font-family: "Montserrat", "Arial", sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: justify;
+    font-weight: 700;
+    font-style: italic;
+}
+
+
+.second-text {
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: justify;
+    font-weight: 300;
+    font-style: italic;   
+}
+
+.third-text {
+    font-family: "Monserrat", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: left;
+    font-weight: 300;
+    font-style: normal;   
+    text-decoration: line-through;
+}
+
+.fourth-text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    text-indent: 30px;
+}
+
+.fifth-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400;
+    text-decoration: overline wavy;
+    color: #49187b;
+    word-spacing: 30px;
+}
+
+.sixth-text {
+    font-family: serif;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-decoration: underline double;
+}
