@@ -1,5 +1,5 @@
 .post {
-    width: 1200px;
+    max-width: 1200px;
     height: 450px;
     overflow: auto;
     border: 1px solid black;
