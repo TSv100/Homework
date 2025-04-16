@@ -1,0 +1,217 @@
+body {
+    background: #181E34;
+    font-family: "Montserrat", "Arial", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: white;
+}
+
+.container {
+    max-width: 930px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Стилизуем header */
+
+.header {
+    padding: 30px 0px 36px;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+}
+
+.header-nav {
+    margin-left: auto;
+}
+
+.header-list {
+    display: flex;
+}
+
+.header-item {
+    margin-right: 30px;
+}
+
+.header-botton {
+    background: white;
+    color: #2766ae;
+    font-weight: 500;
+    border-radius: 100px;
+    padding: 14px 30px;
+}
+
+/* Стилизуем main */
+
+.hero {
+    background: url("../img/hero-bg.jpg") 10% 50% / cover no-repeat;
+    padding: 120px 0;
+}
+
+.hero-title {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 49px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+}
+
+.hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-text {
+    max-width: 436px;
+}
+
+.hero-text span {
+    font-weight: 700;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #01a2cb;
+}
+
+.hero-text-top {
+    margin-bottom: 15px;
+}
+
+.hero-bottons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+}
+
+.hero-botton-one,
+.hero-botton-two {
+    border-radius: 100px;
+    padding: 18px 30px;
+    text-align: center;
+}
+
+.hero-botton-one {
+    background: linear-gradient(180deg, #00a4cc 0%, #2766ae 100%);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.hero-botton-two {
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(129deg, #00a4cc 0%, #2766ae 100%);
+}
+
+.hero-botton-two img {
+    padding-left: 7.2px;
+}
+
+/*==================================================*/
+
+.cards {
+    padding: 120px 0;
+}
+
+.cards-title {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 49px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.cards-text {
+    margin: 0 auto 60px;
+    padding: 0 auto;
+    max-width: 513px;
+    text-align: center;
+}
+
+.cards-flex {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -14px -28px;
+    padding-bottom: 30px;
+}
+
+.cards-flex-item {
+    margin-bottom: 28px;
+    padding: 0 14px;
+    flex: 0 0 25%;
+}
+
+.cards-flex-inner {
+    background: #197CB8;
+    padding: 28px 24px;
+    box-shadow: 4px 4px 13px 0 rgba(5, 13, 41, 0.76);
+    border: 2px solid #176bae;
+    border-radius: 16px;
+}
+
+.cards-flex-title {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.cards-flex-text {
+    text-align: center;
+}
+
+.cards-botton {
+    display: block;
+    max-width: 436px;
+    margin: 0 auto;
+}
+
+/* Стилизуем footer */
+
+.footer {
+    padding: 60px 0dvb;
+    border-top: 1px solid #323952;
+}
+
+.footer-inner {
+    display: flex;
+}
+
+.footer-desc {
+    max-width: 267px;
+    margin-right: auto;
+}
+
+.footer-desc a {
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.footer-col {
+    max-width: 204px;
+    width: 100%;    
+}
+
+.footer-col-margin {
+    margin-left: 28px;
+}
+
+.footer-title {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.footer-item {
+    margin-bottom: 10px;
+}
