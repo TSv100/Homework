@@ -1,0 +1,43 @@
+body {
+    background: #000;
+}
+
+.box {
+    position: relative;
+    margin: 300px auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+    background: #292828;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.strip {
+    position: absolute;
+    top: -100px;
+    left: -100%;
+    height: 30px;
+    width: 900px;
+    background: white;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 1.5s ease;
+}
+
+.text-success {
+    position: absolute;
+    font-size: 30px;
+    color: rgb(71, 204, 71);
+    opacity: 0;
+    transition: opacity 1s ease 1.5s;
+}
+
+.box:hover .strip {
+    transform: scaleX(1);
+}
+
+.box:hover .text-success {
+    opacity: 1;
+}

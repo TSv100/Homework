@@ -1,0 +1,32 @@
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    height: 200vh;
+}
+
+p {
+    font-size: 45px;
+    color: white;
+}
+
+.rectangle {
+    position:fixed;
+    background-color: white;
+    min-height: 100px;
+    border-radius: 10px;
+    min-width: 40vh;
+    left: 50%;
+    right: 50px;
+    bottom: 100px;
+}
+
+.circle {
+    position: absolute;
+    top: -50px;
+    left: 100px;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(236, 41, 57);
+    border-radius: 50px;
+}
