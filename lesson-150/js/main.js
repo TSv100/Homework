@@ -152,7 +152,7 @@
 
     new Swiper('.testimonials__slider', {
 
-        spaceBetween: 0,
+        spaceBetween: 34,
         slidesPerView: 1,
         centeredSlides: true,
 
