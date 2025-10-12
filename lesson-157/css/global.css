@@ -1,0 +1,299 @@
+:root {
+    --accent-text: #1d6fb6;
+    --white-text: #f8fcff;
+    --font-family: "Muller-Trial"
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: var(--font-family) "Arial", sans-serif;
+    background: #191b20 url(/img/bg/bg-line.png) center center repeat-y;
+    line-height: 1.5;
+    color: #fff;
+    z-index: -3;
+}
+
+.body--opened-modal {
+    overflow: hidden;
+}
+
+.wrapper {
+    min-height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex-grow: 1;
+}
+
+.container {
+    max-width: 1850px;
+    margin: 0 auto;
+    padding: 0 15px;
+    height: 100%;
+}
+
+.button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: clamp(11px, 0.646rem + 0.17vw, 13px);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    height: 70px;
+    width: 277px;
+    padding: 3px 15px;
+
+    color: #252121;
+    background: linear-gradient(141deg, #ea422a 0%, #f69020 47.92%, #ffc619 100%);
+}
+
+.title {
+    font-family: var(--font-family);
+    font-weight: 900;
+    font-size: clamp(36px, 1.438rem + 3.25vw, 75px);
+    line-height: 1.25;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin-top: clamp(60px, 0.938rem + 7.5vw, 120px);
+    margin-bottom: clamp(20px, 0.799rem + 1.44vw, 33px);
+    z-index: 10;
+}
+
+.title-text {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: clamp(18px, 1rem + 0.5vw, 24px);
+    line-height: 200%;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 45px;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    border-radius: 50%;
+    width: clamp(52px, 2.5rem + 3vw, 70px);
+    height: clamp(52px, 2.5rem + 3vw, 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2e3441;
+    color: #606571;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.pagination {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: clamp(14px, 0.75rem + 0.5vw, 17px);
+    line-height: 2;
+    letter-spacing: 0.03em;
+    color: #606571;
+}
+
+.pagination-white {
+    color: white;
+    font-size: clamp(19px, 0.979rem + 0.83vw, 24px);
+}
+
+.footer__arrow {
+    display: none;
+    position: fixed;
+    right: 3%;
+    bottom: 5%;
+    width: clamp(52px, 2.5rem + 3vw, 70px);
+    height: clamp(52px, 2.5rem + 3vw, 70px);
+    background: #2e3441;
+    border-radius: 50%;
+    text-align: center;
+    opacity: 0.7;
+    /* начальное значение, не видно если display: none */
+    z-index: 10;
+    transition: opacity 0.2s linear, transform 0.2s ease;
+    border: solid 1px #606571;
+}
+
+.footer__arrow.is-visible {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(90deg);
+    opacity: 0.4;
+}
+
+.footer__arrow:hover {
+    opacity: 0.6;
+    animation: hoverArrow 1.5s;
+    box-shadow: 0 0 0 2em transparent;
+}
+
+/* правило, которое перекроет :hover, если элемент имеет класс clicked */
+.footer__arrow.clicked,
+.footer__arrow.clicked:hover {
+    opacity: 0.3;
+}
+
+
+.modal {
+    position: fixed;
+    inset: 0;
+    top: 0px;
+    background: #00000048;
+    z-index: 100;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .6s;
+}
+
+.body--opened-modal .modal {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.modal__window {
+    position: relative;
+    background: #eee;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    width: 100%;
+    max-width: 900px;
+    box-sizing: border-box;
+    margin: auto;
+    cursor: default;
+
+}
+
+.modal__img {
+    position: relative;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .1);
+    border-radius: 50%;
+    margin: 12px auto;
+    padding: 12px 0 0 0;
+    height: 60px;
+    width: 60px;
+}
+
+
+.modal__cancel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline-offset: 3px;
+    transition: outlne-color .15s ease-in-out;
+    border-radius: 3px;
+    padding: 0;
+    text-align: center;
+    display: block;
+    width: 40px;
+    height: 40px;
+}
+
+.modal__cancel svg {
+    display: block;
+    height: 30px;
+    width: 30px;
+    color: #2e3441;
+}
+
+.modal__cancel path {
+    transition: all .4s ease;
+}
+
+.modal__cancel:hover path,
+.modal__cancel:hover rect {
+    stroke: #191b20;
+}
+
+.modal__title {
+    margin: 0 0 12px 0;
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 41px;
+    text-align: center;
+    color: #34353a;
+}
+
+.modal__form {
+    display: flex;
+    gap: 5px 15px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.modal__text {
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 140%;
+    text-align: center;
+    color: #34353a;
+    margin: 0 0 26px 0
+}
+
+.modal__input-name {
+    width: 255px;
+    top: 526px;
+    margin: 0 15px 20px 0;
+    padding: 10px 0 15px 10px;
+    border: 1px solid #e6e6e6;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: var(--font-family);
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.modal__form:placeholder {
+    font-size: 17px;
+    color: #000;
+}
+
+.modal__input-phone {
+    width: 255px;
+    top: 526px;
+    margin: 0 15px 20px 0;
+    padding: 10px 0 15px 10px;
+    border: 1px solid #e6e6e6;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: var(--font-family);
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.modal__button {
+    cursor: pointer;
+}
