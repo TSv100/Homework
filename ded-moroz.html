@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Письмо Деду Морозу</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298, #4a90e2, #87CEEB);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Снежинки */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* Конверт */
+        .envelope {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            width: 100%;
+            max-width: 800px;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 10;
+            border: 3px solid #e3f2fd;
+        }
+
+        .envelope:before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 30px;
+            background: #d32f2f;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e3c72;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .letter-text {
+            font-size: 1em;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        .signature {
+            text-align: right;
+            font-style: italic;
+            margin-top: 40px;
+            font-size: 1.3em;
+            color: #1e3c72;
+        }
+
+        .stamp {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            background: #d32f2f;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            transform: rotate(15deg);
+            border: 3px dashed white;
+        }
+
+        .decoration {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            opacity: 0.1;
+        }
+
+        .decoration:nth-child(1) {
+            top: 10px;
+            left: 10px;
+            background: radial-gradient(circle, #1e3c72, transparent);
+        }
+
+        .decoration:nth-child(2) {
+            bottom: 10px;
+            right: 10px;
+            background: radial-gradient(circle, #87CEEB, transparent);
+        }
+
+        @media (max-width: px) {
+            .envelope {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="envelope">
+        <div class="decoration"></div>
+        <div class="decoration"></div>
+
+        <h1>✉️Письмо Деду Морозу✉️</h1>
+
+        <div class="letter-text">
+            <p style="text-align: center;"><strong>Здравствуй, дорогой Дедушка Мороз!</strong></p>
+            <p style="margin-block: 15px;  font-style: italic; font-size: 1em;">Пишет тебе Танечка сорока лет от роду.
+                Надеюсь, у тебя всё хорошо, твои олени здоровы и подарки еще остались. <br>В этом году я решила зайти в
+                АйТи и жить стало веселее. Но сложнее. Но все равно прикольнее, потому что учиться - это как на
+                американских горках: то хочу-хочу всё пройти за неделю... <br>Потом думаешь - ну за два месяца точно
+                реально пройти, если не тратить время на сон... <br>Потом после перерыва в несколько недель - блин,
+                кажись, ничего не помню, похоже, не мое, ну ладно - по 20 минуток в день попробую хотя бы начать
+                заниматься... <br>Потом в телегу приходит пруф от того самого Дениса на кучу денег за заказ и думаешь:
+                да вроде норм, не всё забылось, кажись опять хочу-хочу учиться... То есть жизнь в этом году у меня очень
+                нескучная.</p>
+            <p style="text-align: center; color: #1e3c72; font-weight: bold;">Если это возможно, я бы очень хотела на
+                Новый год:</p>
+            <ul style="margin-inline: auto; margin-top: 10px; color: #d32f2f; max-width: 600px;">
+                <li>продление обучения, потому что срок его у меня заканчивается, и так хочется еще чуть-чуть его
+                    продлить</li>
+                <li>А больше всего — чтобы все были здоровы и счастливы!</li>
+            </ul>
+            <p style="text-align: center; margin: 20px auto; font-weight: bold; max-width: 500px;">Спасибо тебе за то,
+                что пока еще приходишь каждый год и даришь нам волшебство и веру в чудеса!</p>
+        </div>
+
+        <div class="signature">
+            С уважением и любовью,<br>
+            <strong>Таня</strong><br>
+            <span style="font-size: 0.9em;">23:30</span>
+        </div>
+
+        <div class="stamp">
+            ПОЧТА<br>СЕВЕРА
+        </div>
+    </div>
+
+    <script>
+        // Создание снежинок
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+
+            // Случайный размер
+            const size = Math.random() * 10 + 5;
+            snowflake.style.width = `${size}px`;
+            snowflake.style.height = `${size}px`;
+
+            // Случайная позиция
+            snowflake.style.left = `${Math.random() * 100}vw`;
+
+            // Случайная прозрачность
+            snowflake.style.opacity = Math.random() * 0.5 + 0.3;
+
+            // Случайная скорость
+            const duration = Math.random() * 5 + 5;
+            snowflake.style.animationDuration = `${duration}s`;
+
+            // Случайная задержка
+            snowflake.style.animationDelay = `${Math.random() * 5}s`;
+
+            document.body.appendChild(snowflake);
+
+            // Удаление снежинки после анимации
+            setTimeout(() => {
+                snowflake.remove();
+            }, duration * 1000);
+        }
+
+        // Создаем снежинки каждые 100ms
+        setInterval(createSnowflake, 100);
+
+        // Добавляем эффект мерцания конверта
+        const envelope = document.querySelector('.envelope');
+        setInterval(() => {
+            envelope.style.boxShadow = `
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(30, 60, 114, 0.4)
+            `;
+            setTimeout(() => {
+                envelope.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.3)';
+            }, 500);
+        }, 3000);
+    </script>
+
+</body>
+
+</html>
