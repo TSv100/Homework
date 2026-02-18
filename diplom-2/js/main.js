@@ -1,93 +1,89 @@
 (function () {
-  // Бургер
+  //Бургер
+
   document.addEventListener('click', burgerInit)
-  document.addEventListener('keydown', closeBurgerOnEsc)
 
   function burgerInit(e) {
     const burgerIcon = e.target.closest('.burger-icon')
     const burgerNavLink = e.target.closest('.header__contact-link')
-    const burgerMenu = e.target.closest('.header__nav') // Или ваш селектор меню
-
+    const burgerMenu = e.target.closest('.header__nav')
+    
     // Если клик по иконке бургера или ссылке - переключаем меню
     if (burgerIcon || burgerNavLink) {
-      if (document.documentElement.clientWidth > 1300) return
-      if (!document.body.classList.contains('body--opened-menu')) {
-        document.body.classList.add('body--opened-menu')
-      } else {
-        document.body.classList.remove('body--opened-menu')
-      }
-      return
+        if (document.documentElement.clientWidth > 1300) return
+        
+        // ТОЛЬКО для элементов бургера вызываем preventDefault
+        e.preventDefault()
+        
+        if (!document.body.classList.contains('body--opened-menu')) {
+            document.body.classList.add('body--opened-menu')
+        } else {
+            document.body.classList.remove('body--opened-menu')
+        }
+        return
     }
-
+    
     // Если меню открыто и клик вне меню - закрываем
-    if (document.body.classList.contains('body--opened-menu') &&
-      !burgerMenu &&
-      !burgerIcon) {
-      document.body.classList.remove('body--opened-menu')
+    if (document.body.classList.contains('body--opened-menu') && !burgerMenu && !burgerIcon) {
+        document.body.classList.remove('body--opened-menu')
     }
-  }
-
-  function closeBurgerOnEsc(e) {
-    if (e.key === 'Escape' && document.body.classList.contains('body--opened-menu')) {
-      document.body.classList.remove('body--opened-menu')
-    }
-  }
+}
 
   // Табы
 
 
-  // элементы
-  const tabs = document.querySelectorAll('.tab-controls__link');
-  const panels = document.querySelectorAll('.tab-panel');
+// элементы
+const tabs = document.querySelectorAll('.tab-controls__link');
+const panels = document.querySelectorAll('.tab-panel');
 
-  // helper: показать панели с указанным data-hall
-  function activateHall(hallId, clickedTab) {
-    // переключаем кнопки
-    tabs.forEach(t => {
-      const is = t.dataset.hall === String(hallId);
-      t.classList.toggle('is-active', is);
-      t.setAttribute('aria-selected', is ? 'true' : 'false');
-      if (is && clickedTab) clickedTab.focus(); // фокус на активный таб (опционально)
-    });
+// helper: показать панели с указанным data-hall
+function activateHall(hallId, clickedTab) {
+  // переключаем кнопки
+  tabs.forEach(t => {
+    const is = t.dataset.hall === String(hallId);
+    t.classList.toggle('is-active', is);
+    t.setAttribute('aria-selected', is ? 'true' : 'false');
+    if (is && clickedTab) clickedTab.focus(); // фокус на активный таб (опционально)
+  });
 
-    // переключаем все панели (и в info, и в gallery)
-    panels.forEach(p => {
-      const is = p.dataset.hall === String(hallId);
-      p.classList.toggle('tab-panel--active', is);
-      // если используете aria-hidden — обновим:
-      p.setAttribute('aria-hidden', is ? 'false' : 'true');
-    });
+  // переключаем все панели (и в info, и в gallery)
+  panels.forEach(p => {
+    const is = p.dataset.hall === String(hallId);
+    p.classList.toggle('tab-panel--active', is);
+    // если используете aria-hidden — обновим:
+    p.setAttribute('aria-hidden', is ? 'false' : 'true');
+  });
 
-    // если галерея содержит Swiper-инстансы — обновляем/переключаем их
-    // пример: если вы храните swiper-объекты в объекте swipersByHall
-    if (window.swipersByHall && window.swipersByHall[hallId]) {
-      const s = window.swipersByHall[hallId];
-      // например, сброс к первому слайду и обновление размеров
-      if (s && typeof s.update === 'function') {
-        s.update();
-        s.slideTo(0, 0);
-      }
+  // если галерея содержит Swiper-инстансы — обновляем/переключаем их
+  // пример: если вы храните swiper-объекты в объекте swipersByHall
+  if (window.swipersByHall && window.swipersByHall[hallId]) {
+    const s = window.swipersByHall[hallId];
+    // например, сброс к первому слайду и обновление размеров
+    if (s && typeof s.update === 'function') {
+      s.update();
+      s.slideTo(0, 0);
     }
   }
+}
 
-  // обработчик клика
-  tabs.forEach(tab => {
-    tab.addEventListener('click', (e) => {
-      e.preventDefault();
-      const hallId = tab.dataset.hall;
-      activateHall(hallId, tab);
-    });
-
-    // необязательная поддержка клавиатуры (ArrowLeft/ArrowRight)
-    tab.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-        e.preventDefault();
-        const idx = Array.from(tabs).indexOf(tab);
-        const nextIdx = (e.key === 'ArrowRight') ? (idx + 1) % tabs.length : (idx - 1 + tabs.length) % tabs.length;
-        tabs[nextIdx].click();
-      }
-    });
+// обработчик клика
+tabs.forEach(tab => {
+  tab.addEventListener('click', (e) => {
+    e.preventDefault();
+    const hallId = tab.dataset.hall;
+    activateHall(hallId, tab);
   });
+
+  // необязательная поддержка клавиатуры (ArrowLeft/ArrowRight)
+  tab.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      const idx = Array.from(tabs).indexOf(tab);
+      const nextIdx = (e.key === 'ArrowRight') ? (idx + 1) % tabs.length : (idx - 1 + tabs.length) % tabs.length;
+      tabs[nextIdx].click();
+    }
+  });
+});
 
 
   //Аккордеон с Faqs
@@ -229,22 +225,66 @@
       290: {
         slidesPerView: 1,
         spaceBetween: -30
-      },
-      500: {
+    },
+    500: {
         slidesPerView: 2.3,
         spaceBetween: 30
-      },
-      850: {
+    },
+    850: {
         slidesPerView: 3.3,
         spaceBetween: 53
-      },
-      1480: {
+    },
+    1480: {
         slidesPerView: 5.3
-      }
+    }
     },
     on: {}
   });
 
+  //Модалка
+
+  const modal = document.querySelector('.modal');
+  const openButtons = document.querySelectorAll('.modal--button');   // кнопки, которые открывают модал (если есть)
+  const closeButtons = modal ? modal.querySelectorAll('.modal__button, .modal__cancel') : []; // кнопка "забронировать" + крестик
+  
+  if (!modal) throw new Error('Модал не найден: .modal');
+  
+  const SHOW_CLASS = 'body--opened-modal';
+  
+  function openModal(e){
+    e && e.preventDefault();
+    document.body.classList.add(SHOW_CLASS);
+  }
+  
+  function closeModalImmediate(e){
+    e && e.preventDefault();
+    document.body.classList.remove(SHOW_CLASS);
+  }
+  
+  // открытие (если есть внешняя кнопка(и))
+  openButtons.forEach(btn => btn.addEventListener('click', openModal));
+  
+  // закрытие при клике по оверле или крестику (ваша существующая логика)
+  modal.addEventListener('click', (e) => {
+    const target = e.target;
+    if (target.closest('.modal__cancel') || target.classList.contains('modal')) {
+      closeModalImmediate(e);
+    }
+  });
+  
+  // закрытие при клике на кнопку внутри модалки (.modal__button)
+  closeButtons.forEach(btn => btn.addEventListener('click', (e) => {
+    // если это кнопка отправки формы и нужна отправка — не делать e.preventDefault()
+    e.preventDefault();
+    // выполнить действие (например, валидация/отправка) перед закрытием при необходимости
+    closeModalImmediate();
+  }));
+  
+  // опционально: закрывать ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModalImmediate();
+  });
+  
   //Пересчет номера слайда в секции бронирования
 
   // В момент изменения слайда
@@ -253,52 +293,6 @@
 
   // Обновляем псевдоэлемент
   slide.querySelector('.circle').setAttribute('data-number', number);
-
-
-  //Модалка
-
-  const modal = document.querySelector('.modal');
-  const openButtons = document.querySelectorAll('.modal--button');   // кнопки, которые открывают модал (если есть)
-  const closeButtons = modal ? modal.querySelectorAll('.modal__button, .modal__cancel') : []; // кнопка "забронировать" + крестик
-
-  if (!modal) throw new Error('Модал не найден: .modal');
-
-  const SHOW_CLASS = 'body--opened-modal';
-
-  function openModal(e) {
-    e && e.preventDefault();
-    document.body.classList.add(SHOW_CLASS);
-  }
-
-  function closeModalImmediate(e) {
-    e && e.preventDefault();
-    document.body.classList.remove(SHOW_CLASS);
-  }
-
-  // открытие (если есть внешняя кнопка(и))
-  openButtons.forEach(btn => btn.addEventListener('click', openModal));
-
-  // закрытие при клике по оверле или крестику (ваша существующая логика)
-  modal.addEventListener('click', (e) => {
-    const target = e.target;
-    if (target.closest('.modal__cancel') || target.classList.contains('modal')) {
-      closeModalImmediate(e);
-    }
-  });
-
-  // закрытие при клике на кнопку внутри модалки (.modal__button)
-  closeButtons.forEach(btn => btn.addEventListener('click', (e) => {
-    // если это кнопка отправки формы и нужна отправка — не делать e.preventDefault()
-    e.preventDefault();
-    // выполнить действие (например, валидация/отправка) перед закрытием при необходимости
-    closeModalImmediate();
-  }));
-
-  // опционально: закрывать ESC
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModalImmediate();
-  });
-
 
 
 
